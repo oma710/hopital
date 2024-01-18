@@ -2,8 +2,10 @@ package com.projet.hopital.endPoint;
 
 import com.projet.hopital.entities.Medecin;
 import com.projet.hopital.entities.Patient;
+import com.projet.hopital.entities.Rendezvous;
 import com.projet.hopital.service.MedecinServiceImpl;
 import com.projet.hopital.service.PatientServiceImpl;
+import com.projet.hopital.service.RendezvousServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,8 @@ public class HopitalController {
     private MedecinServiceImpl medecinService;
     @Autowired
     private PatientServiceImpl patientService;
+    @Autowired
+    private RendezvousServiceImpl rendezvousService;
     @GetMapping("/medecinslist")
     public ResponseEntity<List<Medecin>> medecins() {
          List<Medecin> medecins = medecinService.medecinsList();
@@ -49,5 +53,10 @@ public class HopitalController {
     public ResponseEntity<List<Patient>>  patientList() {
         List<Patient> patients =  patientService.patientList();
         return ResponseEntity.ok(patients);
+    }
+    @GetMapping("/rendezvous")
+    public ResponseEntity<List<Rendezvous>> listRebdezvous() {
+        List<Rendezvous> rendezvous = rendezvousService.listRebdezvous();
+        return ResponseEntity.ok(rendezvous);
     }
 }

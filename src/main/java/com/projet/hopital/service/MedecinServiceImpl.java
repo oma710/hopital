@@ -2,7 +2,6 @@ package com.projet.hopital.service;
 
 import com.projet.hopital.entities.Medecin;
 import com.projet.hopital.repository.MedecinRepository;
-import jakarta.transaction.Transactional;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class MedecinServiceImpl implements MedecinService{
     private MedecinRepository medecinRepository;
     @Override
     public void addMedecin(MultipartFile file, Medecin medecin) throws FileUploadException {
-        String filePath = "C:/spring boot/hopital/src/main/resources/medecin-picture/" + file.getOriginalFilename();
+        String filePath = "C:/spring/hopital/src/main/resources/medecin-picture/" + file.getOriginalFilename();
         try {
             Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
             medecin.setImageName(file.getOriginalFilename());

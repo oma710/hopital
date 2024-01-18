@@ -1,8 +1,7 @@
 package com.projet.hopital.endPoint;
 
 import com.projet.hopital.DTO.RendezvousDTO;
-import com.projet.hopital.entities.Rendezvous;
-import com.projet.hopital.service.RendezvousService;
+import com.projet.hopital.service.RendezvousServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,10 +16,11 @@ public class RendezvousController {
     @Autowired
     private ModelMapper modelMapper;
     @Autowired
-    private RendezvousService rendezvousService;
+    private RendezvousServiceImpl rendezvousService;
     @PostMapping("/save")
     public ResponseEntity<String> addRendezV(@RequestBody RendezvousDTO rendezvousDTO) {
         try{
+
             rendezvousService.addRendezV(rendezvousDTO);
             return new ResponseEntity<>("Rendezvous added successfully", HttpStatus.CREATED);
         }catch (Exception e){

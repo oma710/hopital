@@ -25,6 +25,6 @@ public class RendezvousServiceImpl implements RendezvousService{
 
     @Override
     public List<Rendezvous> listRebdezvous() {
-        return null;
+        return rendezvousRepository.findAll();
     }
 }
