@@ -18,15 +18,8 @@ public class PatientController {
     private EmailServiceImpl emailServiceImpl;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addPatient(@RequestBody Patient patient) {
-        patientService.addPatient(patient);
-
-        // Gather necessary information for the email
-        //String to = patient.getEmail(); // Assuming Patient has an email attribute
-        //String subject = "New Patient Added";
-        //String body = "A new patient has been added with details: " + patient.toString(); // Adjust the body as needed
-
-        //emailServiceImpl.sendEmail(to, subject, body);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Patient added successfully");
+    public ResponseEntity<Patient> addPatient(@RequestBody Patient patient) {
+        Patient createdPatient = patientService.addPatient(patient);
+        return new ResponseEntity<>(createdPatient, HttpStatus.CREATED);
     }
 }

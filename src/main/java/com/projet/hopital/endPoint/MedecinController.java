@@ -1,13 +1,14 @@
 package com.projet.hopital.endPoint;
 
+import com.projet.hopital.DTO.MedecinDTO;
 import com.projet.hopital.entities.Medecin;
 import com.projet.hopital.service.MedecinServiceImpl;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/medecin")
@@ -16,9 +17,9 @@ public class MedecinController {
    @Autowired
    private MedecinServiceImpl medecinService;
 
-    @PostMapping(value = "/add",consumes = {"multipart/form-data"})
-    public ResponseEntity<String> addMedecin(@RequestPart("file") MultipartFile file, Medecin medecin) throws FileUploadException {
-        medecinService.addMedecin(file,medecin);
+    @PostMapping("/add")
+    public ResponseEntity<String> addMedecin(MedecinDTO medecinDTO) {
+        medecinService.addMedecin(medecinDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body("Medecin added successfully");
     }
 
