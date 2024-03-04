@@ -13,14 +13,13 @@ public class Medecin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
+    private String prenom;
     private String email;
-    private String imageName;
-    private String imagePath;
     @Enumerated(EnumType.STRING)
     private Specialite specialite;
-    private String adresse;
-    private String phoneNumber;
+    private String numeroDeSalle;
+    private String telephone;
     private int experienceYears;
     private String qualifications;
-    private boolean suppression;
+    private boolean suppression = false;
 }

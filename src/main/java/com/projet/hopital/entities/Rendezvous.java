@@ -15,12 +15,13 @@ public class Rendezvous {
     private Long id;
     private String nature_of_the_appointment;
     private String reason;
+    @Temporal(TemporalType.DATE)
     private Date dateRDV;
+    @Temporal(TemporalType.TIME)
     private Date heureRDV;
-    private String location;
+    private int slot;
     @ManyToOne
     private Patient patient;
     @ManyToOne
     private Medecin medecin;
-
 }
