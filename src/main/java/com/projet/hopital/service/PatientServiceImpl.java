@@ -14,9 +14,10 @@ public class PatientServiceImpl implements PatientService{
     @Autowired
     private PatientRepository patientRepository;
     @Override
-    public void addPatient(Patient patient) {
+    public Patient addPatient(Patient patient) {
         patient.setCode(UUID.randomUUID().toString());
-        patientRepository.save(patient);
+       Patient patient1 = patientRepository.save(patient);
+        return patient1;
     }
 
     @Override

@@ -1,15 +1,13 @@
 package com.projet.hopital.service;
 
+import com.projet.hopital.DTO.MedecinDTO;
 import com.projet.hopital.entities.Medecin;
+import com.projet.hopital.enumeration.Specialite;
 import com.projet.hopital.repository.MedecinRepository;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 @Service
@@ -17,19 +15,12 @@ public class MedecinServiceImpl implements MedecinService{
 
     @Autowired
     private MedecinRepository medecinRepository;
+    @Autowired
+    private ModelMapper modelMapper;
     @Override
-    public void addMedecin(MultipartFile file, Medecin medecin) throws FileUploadException {
-        String filePath = "C:/spring/hopital/src/main/resources/medecin-picture/" + file.getOriginalFilename();
-        try {
-            Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
-            medecin.setImageName(file.getOriginalFilename());
-            medecin.setImagePath(filePath);
-            medecin.setSuppression(false);
+    public void addMedecin(MedecinDTO medecinDTO)  {
+        Medecin medecin = modelMapper.map(medecinDTO,Medecin.class);
             medecinRepository.save(medecin);
-        } catch (Exception e) {
-            throw new FileUploadException("File upload failed: " + e.getMessage());
-        }
-
     }
 
     @Override
@@ -43,7 +34,7 @@ public class MedecinServiceImpl implements MedecinService{
     }
 
     @Override
-    public List<Medecin> getMedecinBySpecialite(String specialite) {
+    public List<Medecin> getMedecinBySpecialite(Specialite specialite) {
         return medecinRepository.getMedecinBySpecialite(specialite);
     }
 
@@ -58,9 +49,10 @@ public class MedecinServiceImpl implements MedecinService{
         if(medecin!=null){
             medecin.setNom(updatedMedecin.getNom());
             medecin.setEmail(updatedMedecin.getEmail());
+            medecin.setPrenom(updatedMedecin.getPrenom());
             medecin.setSpecialite(updatedMedecin.getSpecialite());
-            medecin.setAdresse(updatedMedecin.getAdresse());
-            medecin.setPhoneNumber(updatedMedecin.getPhoneNumber());
+            medecin.setNumeroDeSalle(updatedMedecin.getNumeroDeSalle());
+            medecin.setTelephone(updatedMedecin.getTelephone());
             medecin.setExperienceYears(updatedMedecin.getExperienceYears());
             medecin.setQualifications(updatedMedecin.getQualifications());
             medecinRepository.save(medecin);
