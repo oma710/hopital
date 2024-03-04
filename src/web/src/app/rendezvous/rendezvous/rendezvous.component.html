@@ -1,45 +1,57 @@
-<div class="container">
-    <form class="row g-3 needs-validation" novalidate>
+<div class="" style="position: absolute; top: 10vw; left: 5vw;">
+  <form #form="ngForm" (ngSubmit)="saveRendezvous(form)">
 
-        <div class="col-md-4">
-              <label class="form-label">Nature Of The Appointment</label>
-              <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+    <div style="display: flex;">
+      <div>
+        <label for="natureOfTheAppointment">Nature Of The Appointment</label>
+        <div>
+          <select class="input-nature" [(ngModel)]="rendezvous.natureOfTheAppointment" name="natureOfTheAppointment" required>
+            <option selected value="">Choose...</option>
+            <option value="doctor consultation">doctor consultation</option>
+          </select>
         </div>
+      </div>
 
-        <div class="col-md-8">
-              <label class="form-label">Reason</label>
-              <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+      <div style="margin-left: 1vw;">
+        <label for="reason">Reason</label>
+        <div>
+          <select class="input-reason" [(ngModel)]="rendezvous.reason" name="reason" (change)="onReasonSelected()" required>
+            <option selected disabled value="">Choose...</option>
+            <option *ngFor="let specialite of specialites" [value]="specialite">{{specialite}}</option>
+          </select>
         </div>
+      </div>
+    </div>
 
-        <div class="col-md-4">
-            <mat-form-field class="example-full-width">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker">
-                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-                </mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field> 
+    <div class="" style="margin-top: 1vw;">
+      <label>Medecin</label>
+      <div>
+        <select class="input-m" [(ngModel)]="rendezvous.medecinId" name="medecinId">
+          <option selected disabled value="">Choose...</option>
+          <option *ngFor="let medecin of medecinList" [value]="medecin.id" >{{medecin.nom}} {{medecin.prenom}}</option>
+        </select>
+      </div>
+      <div>
+        <input type="hidden" [(ngModel)]="rendezvous.patientId" name="patientId" />
+      </div>
+    </div>
+
+    <div style="display: flex; margin-top: 1vw;">
+      <div class="">
+        <label>date de rdv</label>
+        <div>
+          <input type="date" class="input-date" [(ngModel)]="rendezvous.dateRDV" name="dateRDV" (change)="getFreeTime()"/>
         </div>
-        <div class="col-md-4">
-          <label class="form-label">Houre de rdv</label>
-          
-        
+      </div>
+      <div style="margin-left: 1vw;">
+        <label>Houre de rdv</label>
+        <div style="width: 20vw;" *ngIf="time">
+          <button *ngFor="let time of timeSlot" type="button"  (click)="Addcity(time.key)"  [(ngModel)]="rendezvous.slot" ngDefaultControl name="slot" [ngClass]="{'red-color':freeheure.includes(time.key),'green-color': !freeheure.includes(time.key)}" [disabled]="freeheure.includes(time.key)?true:false" >{{time.value}}</button>
         </div>
-        
-        <div class="col-md-6">
-          <label for="validationCustom03" class="form-label">City</label>
-          <input type="text" class="form-control" id="validationCustom03" required>
-          
-        </div>
-    
-        <div class="col-md-3">
-          <label for="validationCustom05" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="validationCustom05" required>
-        </div>
-        <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit form</button>
-        </div>
-      </form>
+      </div>
+    </div>
+    <div class="" style="margin-top: 2vw;">
+      <button type="submit">Save</button>
+    </div>
+  </form>
 </div>

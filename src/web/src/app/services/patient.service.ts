@@ -10,7 +10,7 @@ export class PatientService {
 
   constructor(private http : HttpClient) { }
 
-  addPatient(patient: Patient):Observable<Object>{
-    return this.http.post("http://localhost:8080/patient/add", patient);
+  addPatient(patient: Patient):Observable<Patient>{
+    return this.http.post<Patient>("http://localhost:8080/patient/add", patient);
   }
 }

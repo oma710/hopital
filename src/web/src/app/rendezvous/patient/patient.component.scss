@@ -2,9 +2,26 @@
 input.ng-invalid.ng-touched, select.ng-invalid.ng-touched{
     border:1px solid red;
 }
-.block{
-    display: inline;
+
+input{
+    border: none;
+    border: 1px solid cadetblue;
 }
-label{
-    font-weight: 700;
+
+select{
+    border: none;
+    border: 1px solid cadetblue; 
+}
+
+select:focus{
+    outline: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+.input-nom{
+    width: 16vw;
+    height: 2.5vw;
 }

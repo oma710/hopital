@@ -1,0 +1,61 @@
+<div class="container">
+    
+    <div class="row">
+      <form class="row g-3" #f="ngForm" (ngSubmit)="onSubmite()" >
+        <div class="col-md-4">
+          <label class="form-label">Nom*</label>
+          <input type="text" class="form-control" id="nom" [(ngModel)]="medecin.nom" name="nom"  required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Prenom*</label>
+          <input type="text" class="form-control" id="prenom" [(ngModel)]="medecin.prenom" name="prenom" required>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Email*</label>
+            <input type="text" class="form-control" id="email" [(ngModel)]="medecin.email" name="email" required email>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Telephone*</label>
+            <input type="text" class="form-control" id="telephone" [(ngModel)]="medecin.telephone" name="telephone" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Specialite*</label>
+          <select class="form-select" id="specialite" [(ngModel)]="medecin.specialite" name="specialite" required>
+            <option selected disabled value="">Choose...</option>
+            <option value="MÉDECINEINTERNE">MÉDECINEINTERNE</option>
+            <option value="PÉDIATRIE">PÉDIATRIE</option>
+            <option value="CARDIOLOGIE">CARDIOLOGIE</option>
+            <option value="DERMATOLOGIE">DERMATOLOGIE</option>
+            <option value="CHIRURGIEORTHOPÉDIQUE">CHIRURGIEORTHOPÉDIQUE</option>
+            <option value="GASTROENTÉROLOGIE">GASTROENTÉROLOGIE</option>
+            <option value="NEUROLOGIE">NEUROLOGIE</option>
+            <option value="OPHTALMOLOGIE">OPHTALMOLOGIE</option>
+            <option value="RHUMATOLOGIE">RHUMATOLOGIE</option>
+            <option value="NÉPHROLOGIE">NÉPHROLOGIE</option>
+          </select>
+      </div>
+      <div class="col-md-6">
+            <label class="form-label">Experience Years</label>
+            <input type="text" class="form-control" id="experienceYears" [(ngModel)]="medecin.experienceYears" name="experienceYears">
+      </div>
+    
+      <div class="col-md-4">
+          <label class="form-label">Qualifications</label>
+          <input type="text" class="form-control" id="qualifications" [(ngModel)]="medecin.qualifications" name="qualifications">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Numéro De Salle</label>
+        <input type="text" class="form-control" id="numeroDeSalle" [(ngModel)]="medecin.numeroDeSalle" name="numeroDeSalle">
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="suppression" [(ngModel)]="medecin.suppression"> valid
+        </label>
+      </div>
+        
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit" [disabled]="f.invalid">save</button>
+        </div>
+      </form>
+    </div>
+  </div>

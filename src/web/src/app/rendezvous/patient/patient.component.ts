@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Patient } from 'src/app/model/patient';
 import { PatientService } from 'src/app/services/patient.service';
 
@@ -12,7 +13,7 @@ export class PatientComponent implements OnInit{
 
  
   patient:Patient = new Patient();
-  constructor(private service:PatientService){
+  constructor(private service:PatientService, private router:Router){
       
   }
 
@@ -21,10 +22,11 @@ export class PatientComponent implements OnInit{
   }
 
   onSubmite(){
-    console.log("add patient")
+
     this.service.addPatient(this.patient).subscribe(
-      response => {
-        console.log(response);
+      (response:Patient) => {
+        const patientId = response.id;
+        this.router.navigate(['/rendezvous'], { queryParams: { patientId: patientId } });
       },
       error => {
         console.error('Error:', error);

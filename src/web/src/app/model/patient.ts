@@ -15,7 +15,7 @@
   
   export enum Genre {
     // Define your genre options here if not already defined in Angular
-    MÂLE,
+   MÂLE,
    FEMALE,
    AUTRE,
    JE_PRÉFÈRE_NEPAS_LE_DIRE

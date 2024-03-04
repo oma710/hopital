@@ -1,67 +1,98 @@
-<div class="container">
+<div style="position: absolute; top: 10vw; left: 5vw;">
   <h3>ajouter nouveau patient</h3>
-  <div class="row">
-    <form class="row g-3" #f="ngForm" (ngSubmit)="onSubmite()" >
-      <div class="col-md-4">
+  <div>
+    <form #f="ngForm" (ngSubmit)="onSubmite()" >
+      <div style="display: flex;">
+      <div class=" ">
         <label class="form-label">Nom*</label>
-        <input type="text" class="form-control" id="nom" [(ngModel)]="patient.nom" name="nom" #nom="ngModel" required>
-        <span *ngIf="nom.touched && nom.invalid  ">veuillez insérer une nom</span>
+        <div class=""> 
+          <input type="text" id="nom" class="input-nom"  [(ngModel)]="patient.nom" name="nom" #nom="ngModel" required>
+        </div>
+        <!-- <span *ngIf="nom.touched && nom.invalid  ">veuillez insérer une nom</span> -->
       </div>
-      <div class="col-md-4">
+
+      <div class="">
         <label class="form-label">Prenom*</label>
-        <input type="text" class="form-control" id="prenom" [(ngModel)]="patient.prenom" name="prenom" #prenom="ngModel" required>
-        <span *ngIf="prenom.touched && prenom.invalid  ">veuillez insérer une nom</span>
+        <div>
+          <input type="text" id="prenom" class="input-prenom" [(ngModel)]="patient.prenom" name="prenom" #prenom="ngModel" required>
+        </div>
+        <!-- <span *ngIf="prenom.touched && prenom.invalid  ">veuillez insérer une nom</span> -->
       </div>
-      <div class="col-md-4">
-        
+
+      <div class="">
           <label class="form-label">Email*</label>
-          <input type="text" class="form-control" id="email" [(ngModel)]="patient.email" name="email" #email="ngModel" required email>
-          <ng-container class="block" *ngIf="email.touched">
+          <div>
+            <input type="text" id="email" class="input-email" [(ngModel)]="patient.email" name="email" #email="ngModel" required email>
+          </div>
+          
+          <!-- <ng-container class="block" *ngIf="email.touched">
              <span *ngIf="email.errors?.['required']">veuillez insérer une adresse email </span>
              <span *ngIf="email.errors?.['email']">veuillez insérer une adresse email valide</span>
-          </ng-container>
-    
+          </ng-container> -->
       </div>
-      <div class="col-md-6">
+    </div>
+    <div style="display: flex; ">
+      <div class="">
           <label class="form-label">Telephone*</label>
-          <input type="text" class="form-control" id="telephone" [(ngModel)]="patient.contact" name="contact" #telephone="ngModel" required>
-          <span *ngIf="telephone.touched && telephone.invalid">veuillez insérer un numéro de téléphone</span>
+          <div>
+            <input type="text"  id="telephone" class="input-telephone" [(ngModel)]="patient.contact" name="contact" #telephone="ngModel" required>
+          </div>
+          <!-- <span *ngIf="telephone.touched && telephone.invalid">veuillez insérer un numéro de téléphone</span> -->
         </div>
-        <div class="col-md-6">
+
+        <div class="">
           <label class="form-label">Contact en cas d'urgence</label>
-          <input type="text" class="form-control" id="contactencasdurgence" [(ngModel)]="patient.contactencasdurgence" name="contactencasdurgence">
-      </div>
-  
-      <div class="col-md-4">
-        <label class="form-label">Rue</label>
-        <input type="text" class="form-control" id="rue" [(ngModel)]="patient.address.rue" name="rue">
-      </div>
-      <div class="col-md-4">
-        <label class="form-label">ville</label>
-        <input type="text" class="form-control" id="ville" [(ngModel)]="patient.address.ville" name="ville">
-      </div>
-      <div class="col-md-4">
-        <label class="form-label">Zip</label>
-        <input type="text" class="form-control" id="zip" [(ngModel)]="patient.address.zip" name="zip">
-      </div>
-      <div class="col-md-3">
-          <label class="form-label">Age</label>
-          <input type="text" class="form-control" id="age" [(ngModel)]="patient.age" name="age">
-      </div>
-      <div class="col-md-3">
-          <label class="form-label">Genre*</label>
-          <select class="form-select" id="genre" [(ngModel)]="patient.genre" name="genre"  #genre="ngModel" required>
-            <option selected disabled value="">Choose...</option>
-            <option value="MÂLE">Male</option>
-            <option value="FEMELLE">Femalle</option>
-            <option value="AUTRE">AUTRE</option>
-            <option value="JE_PRÉFÈRE_NEPAS_LE_DIRE">JE PRÉFÈRE NEPAS LE DIRE</option>
-          </select>
-          <span *ngIf="genre.touched">Veuillez sélectionner un genre</span>
+          <div>
+            <input type="text"  id="contactencasdurgence" class="input-contactencasdurgence" [(ngModel)]="patient.contactencasdurgence" name="contactencasdurgence">
+          </div>
         </div>
-     
-      <div class="col-12">
-        <button class="btn btn-primary" type="submit" [disabled]="f.invalid">save & get appointment</button>
+      </div>
+
+      <div style="display: flex;">
+      <div class="">
+        <label class="form-label">Rue</label>
+        <div>
+          <input type="text" id="rue" class="input-rue" [(ngModel)]="patient.address.rue" name="rue">
+        </div>
+      </div>
+      <div class="">
+        <label class="form-label">ville</label>
+        <div>
+          <input type="text" id="ville" class="input-ville" [(ngModel)]="patient.address.ville" name="ville">
+        </div>
+      </div>
+      <div class="">
+        <label class="form-label">Zip</label>
+        <div>
+          <input type="text" id="zip" class="input-zip" [(ngModel)]="patient.address.zip" name="zip">
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display: flex;">
+      <div class="">
+          <label class="form-label">Age</label>
+          <div>
+            <input type="text" id="age" class="input-age" [(ngModel)]="patient.age" name="age">
+          </div>
+      </div>
+      <div class="">
+          <label class="form-label">Genre*</label>
+          <div>
+            <select  id="genre" class="select-genre" [(ngModel)]="patient.genre" name="genre"  #genre="ngModel" required>
+              <option selected disabled value="">Choose...</option>
+              <option value="MÂLE">Male</option>
+              <option value="FEMELLE">Femalle</option>
+              <option value="AUTRE">AUTRE</option>
+              <option value="JE_PRÉFÈRE_NEPAS_LE_DIRE">JE PRÉFÈRE NEPAS LE DIRE</option>
+            </select>
+          </div>
+          <!-- <span *ngIf="genre.touched">Veuillez sélectionner un genre</span> -->
+        </div>
+      </div>
+      <div class="">
+        <button type="submit" [disabled]="f.invalid">save & get appointment</button>
       </div>
     </form>
   </div>
