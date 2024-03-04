@@ -3,6 +3,7 @@ package com.projet.hopital.endPoint;
 import com.projet.hopital.entities.Medecin;
 import com.projet.hopital.entities.Patient;
 import com.projet.hopital.entities.Rendezvous;
+import com.projet.hopital.enumeration.Specialite;
 import com.projet.hopital.service.MedecinServiceImpl;
 import com.projet.hopital.service.PatientServiceImpl;
 import com.projet.hopital.service.RendezvousServiceImpl;
@@ -40,7 +41,8 @@ public class HopitalController {
     }
 
     @GetMapping("/medecinsbyspecialite")
-    public ResponseEntity<List<Medecin>> getMedecinBySpecialite(@RequestParam String specialite) {
+
+    public ResponseEntity<List<Medecin>> getMedecinBySpecialite(@RequestParam Specialite specialite) {
         List<Medecin> medecins =  medecinService.getMedecinBySpecialite(specialite);
         if(!medecins.isEmpty()){
             return ResponseEntity.ok(medecins);
@@ -48,7 +50,6 @@ public class HopitalController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-
     @GetMapping("/patient")
     public ResponseEntity<List<Patient>>  patientList() {
         List<Patient> patients =  patientService.patientList();
@@ -59,4 +60,5 @@ public class HopitalController {
         List<Rendezvous> rendezvous = rendezvousService.listRebdezvous();
         return ResponseEntity.ok(rendezvous);
     }
+
 }

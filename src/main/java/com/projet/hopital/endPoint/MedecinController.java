@@ -34,6 +34,13 @@ public class MedecinController {
         }
     }
 
+    @GetMapping("/specialite")
+    public List<String> medecinSpecialiteList(){
+        List<Medecin> medecins = medecinService.medecinsList();
+        List<String> specialite = medecins.stream().map(Medecin::getSpecialite).map(sp->sp.toString()).distinct().collect(Collectors.toList());
+        return specialite;
+    }
+
     public ResponseEntity<Void> updateMedecin(@PathVariable Long id, @RequestBody Medecin updatedMedecin) {
         medecinService.updateMedecin(id, updatedMedecin);
         return ResponseEntity.noContent().build();
