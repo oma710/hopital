@@ -1,5 +1,5 @@
 export class Rendezvous {
-    natureOfTheAppointment!:string;
+    nature_of_the_appointment!:string;
     reason!:string;
     dateRDV!:Date;
     slot!:number;
