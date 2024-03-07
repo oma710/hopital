@@ -12,13 +12,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-import { MedecinComponent } from './medecin/medecin.component';
+import { MedecindashboardComponent } from './medecindashboard/medecindashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     PatientComponent,
     RendezvousComponent,
-    MedecinComponent,
+    MedecindashboardComponent
   ],
   imports: [
     FormsModule,
