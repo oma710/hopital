@@ -13,10 +13,10 @@ public class RendezvousDTO {
     private String reason;
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE,pattern = "yyyy-MM-dd")
-   // private Date dateRDV;
+    private Date dateRDV;
     //@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm")
-  //  @DateTimeFormat(iso = DateTimeFormat.ISO.TIME,pattern = "HH:mm")
-    private Date heureRDV;
+    //@DateTimeFormat(iso = DateTimeFormat.ISO.TIME,pattern = "HH:mm")
+    //private Date heureRDV;
     private int slot;
     private Long patientId;
     private Long medecinId;

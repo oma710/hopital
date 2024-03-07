@@ -3,6 +3,7 @@ package com.projet.hopital.service;
 import com.projet.hopital.DTO.RendezvousDTO;
 import com.projet.hopital.Utile.SlotService;
 import com.projet.hopital.Utile.TimeSlot;
+import com.projet.hopital.entities.Patient;
 import com.projet.hopital.entities.Rendezvous;
 import com.projet.hopital.repository.RendezvousRepository;
 import org.modelmapper.ModelMapper;
@@ -22,18 +23,29 @@ public class RendezvousServiceImpl implements RendezvousService{
     private RendezvousRepository rendezvousRepository;
     @Autowired
     private SlotService slotService;
+    @Autowired
+    private EmailService emailService;
+    @Autowired
+    private PatientService patientService;
 
     @Override
     public void addRendezV(RendezvousDTO rendezvousDTO) {
         Rendezvous rendezvous = modelMapper.map(rendezvousDTO, Rendezvous.class);
-        int slotNumber = rendezvous.getSlot();
-        Date date=  rendezvous.getDateRDV();
+      int slotNumber = rendezvous.getSlot();
+        Date date =  rendezvous.getDateRDV();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = sdf.format(date);
         Date timeSlot = slotService.assignTimeSlot(slotNumber, dateString, rendezvousDTO.getMedecinId());
-        rendezvous.setSlot(rendezvous.getSlot());
+        rendezvous.setSlot(rendezvousDTO.getSlot());
         rendezvous.setHeureRDV(timeSlot);
         rendezvousRepository.save(rendezvous);
+        Patient patient = patientService.getbyId(rendezvousDTO.getPatientId());
+        SimpleDateFormat heure = new SimpleDateFormat("HH:mm");
+        String heureString = heure.format(timeSlot);
+        String to = patient.getEmail() ;
+        String subject = "New rendezvous scheduled";
+        String body = "A new rendezvous has been scheduled for you at  "+ heureString + ".";
+        emailService.sendEmail(to, subject, body);
     }
 
     @Override
