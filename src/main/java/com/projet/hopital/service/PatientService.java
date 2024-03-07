@@ -7,4 +7,5 @@ import java.util.List;
 public interface PatientService {
     Patient addPatient(Patient patient);
     List<Patient> patientList();
+    Patient getbyId(Long id);
 }
