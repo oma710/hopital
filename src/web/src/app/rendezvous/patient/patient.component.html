@@ -1,11 +1,13 @@
-<div style="position: absolute; top: 10vw; left: 5vw;">
+<div class="tittle" style="text-align: center; margin-top: 3vw" >
   <h3>ajouter nouveau patient</h3>
+</div>
+<div style="position: absolute; top: 10vw; left: 5vw;">
   <div>
     <form #f="ngForm" (ngSubmit)="onSubmite()" >
-      <div style="display: flex;">
+      <div style="display: flex; margin-top: 1vw;">
       <div class=" ">
         <label class="form-label">Nom*</label>
-        <div class=""> 
+        <div class="">
           <input type="text" id="nom" class="input-nom"  [(ngModel)]="patient.nom" name="nom" #nom="ngModel" required>
         </div>
         <!-- <span *ngIf="nom.touched && nom.invalid  ">veuillez insérer une nom</span> -->
@@ -24,14 +26,14 @@
           <div>
             <input type="text" id="email" class="input-email" [(ngModel)]="patient.email" name="email" #email="ngModel" required email>
           </div>
-          
+
           <!-- <ng-container class="block" *ngIf="email.touched">
              <span *ngIf="email.errors?.['required']">veuillez insérer une adresse email </span>
              <span *ngIf="email.errors?.['email']">veuillez insérer une adresse email valide</span>
           </ng-container> -->
       </div>
     </div>
-    <div style="display: flex; ">
+    <div style="display: flex; margin-top: 1vw;">
       <div class="">
           <label class="form-label">Telephone*</label>
           <div>
@@ -48,7 +50,7 @@
         </div>
       </div>
 
-      <div style="display: flex;">
+      <div style="display: flex; margin-top: 1vw;">
       <div class="">
         <label class="form-label">Rue</label>
         <div>
@@ -70,7 +72,7 @@
 
     </div>
 
-    <div style="display: flex;">
+    <div style="display: flex; margin-top: 1vw;">
       <div class="">
           <label class="form-label">Age</label>
           <div>
@@ -91,7 +93,7 @@
           <!-- <span *ngIf="genre.touched">Veuillez sélectionner un genre</span> -->
         </div>
       </div>
-      <div class="">
+      <div class="" style="margin-top: 2vw;">
         <button type="submit" [disabled]="f.invalid">save & get appointment</button>
       </div>
     </form>

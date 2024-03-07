@@ -11,14 +11,14 @@ import { PatientService } from 'src/app/services/patient.service';
 })
 export class PatientComponent implements OnInit{
 
- 
+
   patient:Patient = new Patient();
   constructor(private service:PatientService, private router:Router){
-      
+
   }
 
   ngOnInit(): void {
-   
+
   }
 
   onSubmite(){

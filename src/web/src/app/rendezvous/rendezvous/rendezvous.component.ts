@@ -39,8 +39,14 @@ export class RendezvousComponent implements OnInit {
   });
   }
 
-  saveRendezvous(from: any) {
-    console.log(from.value);
+  saveRendezvous() {
+    this.service.saveRendezvous(this.rendezvous).subscribe(response=>{
+
+    },
+      error => {console.log(error)
+    },
+      () => console.log('finale')
+    )
   }
 
   Addcity(arg0: number) {
@@ -54,7 +60,7 @@ export class RendezvousComponent implements OnInit {
          console.log(this.medecinList)
     })
   }
-  
+
   getFreeTime() {
    const id = this.rendezvous.medecinId;
    const date = this.rendezvous.dateRDV;
@@ -64,5 +70,5 @@ export class RendezvousComponent implements OnInit {
      console.log(this.freeheure)
    })
   }
-    
+
 }

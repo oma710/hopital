@@ -6,11 +6,13 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched{
 input{
     border: none;
     border: 1px solid cadetblue;
+    border-radius: 12px;
 }
 
 select{
     border: none;
     border: 1px solid cadetblue; 
+    border-radius: 12px;
 }
 
 select:focus{
@@ -21,7 +23,78 @@ input:focus{
     outline: none;
 }
 
+button[type="submit"]{
+    border: none;
+    background-color: rgb(0, 163, 0);
+    padding: 0.5vw 2vw;
+    border-radius: 18px;
+    font-weight: 600;
+}
+
+button[type="submit"]:hover{
+    
+    background-color: rgb(49, 156, 49);
+    
+}
+
 .input-nom{
-    width: 16vw;
+    padding: 0 1vw;
+    width: 12vw;
     height: 2.5vw;
+    margin-right: 1vw;
+}
+.input-prenom{
+    padding: 0 1vw;
+    width: 12vw;
+    height: 2.5vw;
+    margin-right: 1vw;
+}
+.input-email{
+    padding: 0 1vw;
+    width: 25vw;
+    height: 2.5vw;
+}
+.input-telephone{
+    padding: 0 1vw;
+    width: 17vw;
+    height: 2.5vw;
+    margin-right: 1vw;
+}
+.input-contactencasdurgence{
+    padding: 0 1vw;
+    width: 17vw;
+    height: 2.5vw;
+}
+.input-rue{
+    padding: 0 1vw;
+    width: 10vw;
+    height: 2.5vw;
+    margin-right: 1vw;
+}
+.input-ville{
+    padding: 0 1vw;
+    width: 10vw;
+    height: 2.5vw;
+    margin-right: 1vw;
+}
+.input-zip{
+    padding: 0 1vw;
+    width: 10vw;
+    height: 2.5vw;
+}
+.input-age{
+    padding: 0 1vw;
+    width: 10vw;
+    height: 2.5vw;
+    margin-right: 1vw;
+}
+.select-genre{
+    padding: 0 1vw;
+    width: 10vw;
+    height: 2.5vw;
+}
+label{
+    font-size: 1.1vw;
+    font-family: revert;
+    margin-bottom: 0.5vw;
 }

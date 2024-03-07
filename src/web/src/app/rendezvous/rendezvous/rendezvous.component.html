@@ -1,11 +1,11 @@
-<div class="" style="position: absolute; top: 10vw; left: 5vw;">
-  <form #form="ngForm" (ngSubmit)="saveRendezvous(form)">
+<div class="" style="position: absolute; top: 15vw; left: 5vw;">
+  <form #form="ngForm" (ngSubmit)="saveRendezvous()">
 
     <div style="display: flex;">
       <div>
-        <label for="natureOfTheAppointment">Nature Of The Appointment</label>
+        <label>Nature Of The Appointment</label>
         <div>
-          <select class="input-nature" [(ngModel)]="rendezvous.natureOfTheAppointment" name="natureOfTheAppointment" required>
+          <select class="input-nature" [(ngModel)]="rendezvous.nature_of_the_appointment" name="natureOfTheAppointment" required>
             <option selected value="">Choose...</option>
             <option value="doctor consultation">doctor consultation</option>
           </select>
@@ -13,7 +13,7 @@
       </div>
 
       <div style="margin-left: 1vw;">
-        <label for="reason">Reason</label>
+        <label>Reason</label>
         <div>
           <select class="input-reason" [(ngModel)]="rendezvous.reason" name="reason" (change)="onReasonSelected()" required>
             <option selected disabled value="">Choose...</option>

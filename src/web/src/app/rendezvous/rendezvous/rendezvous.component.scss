@@ -44,7 +44,7 @@ select:focus{
 
 button[type="submit"]{
     border: none;
-    background-color: rgb(0, 228, 216);
+    background-color: rgb(0, 163, 0);
     padding: 0.5vw 2vw;
     border-radius: 18px;
     font-weight: 600;
@@ -52,7 +52,7 @@ button[type="submit"]{
 
 button[type="submit"]:hover{
     
-    background-color: rgb(3, 168, 160);
+    background-color: rgb(49, 156, 49);
     
 }
 
@@ -62,7 +62,6 @@ button{
     margin: 0.2vw;
     padding: 0.4vw;
 }
-
 
 .red-color{
     background-color: rgb(155, 155, 155);
@@ -74,4 +73,10 @@ button{
 
 .green-color:hover{
     background-color: rgb(4, 146, 4);
+}
+
+label{
+    font-size: 1.1vw;
+    font-family: revert;
+    margin-bottom: 0.5vw;
 }
