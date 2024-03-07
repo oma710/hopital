@@ -17,9 +17,8 @@ import java.util.stream.Collectors;
 public class RendezvousController {
 
     @Autowired
-    private ModelMapper modelMapper;
-    @Autowired
-    private RendezvousServiceImpl rendezvousService;
+    private RendezvousService rendezvousService;
+
     @PostMapping("/save")
     public void addRendezV(@RequestBody RendezvousDTO rendezvousDTO) {
         rendezvousService.addRendezV(rendezvousDTO);
